@@ -1,0 +1,217 @@
+@import "tailwindcss";
+
+:root {
+  --colosseum-bg: #0f0518;
+  --colosseum-accent: #1a0a2e;
+  --gold-primary: #ffd700;
+  --gold-secondary: #daa520;
+  --gold-dim: #b8860b;
+  --army-red: #8b0000;
+  --stone-gray: #4a4a4a;
+  --torch-orange: #ff6b35;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: linear-gradient(180deg, #1a0a2e 0%, #0f0518 100%);
+  min-height: 100vh;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* Colosseum Background */
+.colosseum-bg {
+  background: 
+    radial-gradient(ellipse at 50% 0%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+    linear-gradient(180deg, #1a0a2e 0%, #0f0518 50%, #050208 100%);
+  position: relative;
+}
+
+.colosseum-bg::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 40px,
+      rgba(0, 0, 0, 0.3) 40px,
+      rgba(0, 0, 0, 0.3) 42px
+    );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Torchlight Effect */
+.torchlight {
+  position: relative;
+}
+
+.torchlight::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: 
+    radial-gradient(ellipse at 20% 0%, rgba(255, 107, 53, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 0%, rgba(255, 215, 0, 0.2) 0%, transparent 40%),
+    radial-gradient(ellipse at 80% 0%, rgba(255, 107, 53, 0.3) 0%, transparent 50%);
+  animation: torchFlicker 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes torchFlicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Gold Glow Effects */
+.gold-glow {
+  box-shadow: 
+    0 0 20px rgba(255, 215, 0, 0.5),
+    0 0 40px rgba(255, 215, 0, 0.3),
+    0 0 60px rgba(255, 215, 0, 0.1);
+}
+
+.throne-glow {
+  animation: thronePulse 2s ease-in-out infinite;
+}
+
+@keyframes thronePulse {
+  0%, 100% { 
+    box-shadow: 
+      0 0 30px rgba(255, 215, 0, 0.6),
+      0 0 60px rgba(255, 215, 0, 0.4),
+      inset 0 0 30px rgba(255, 215, 0, 0.2);
+  }
+  50% { 
+    box-shadow: 
+      0 0 50px rgba(255, 255, 215, 0.8),
+      0 0 100px rgba(255, 215, 0, 0.5),
+      inset 0 0 50px rgba(255, 215, 0, 0.3);
+  }
+}
+
+/* Floating Crown */
+.floating-crown {
+  animation: floatCrown 3s ease-in-out infinite;
+}
+
+@keyframes floatCrown {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+/* Bouncing Chest */
+.bounce-chest {
+  animation: chestBounce 0.5s ease-out;
+}
+
+@keyframes chestBounce {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.1) translateY(-5px); }
+  50% { transform: scale(0.95) translateY(2px); }
+  70% { transform: scale(1.05) translateY(-3px); }
+  100% { transform: scale(1) translateY(0); }
+}
+
+/* Warrior March Animation */
+.warrior-march {
+  animation: warriorMarch 0.8s steps(4) infinite;
+}
+
+@keyframes warriorMarch {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-4px); }
+}
+
+/* Arrow Animation */
+.arrow-flight {
+  animation: arrowFlight 1s ease-out forwards;
+}
+
+@keyframes arrowFlight {
+  0% { 
+    transform: translateX(-100vw) translateY(50vh) rotate(-45deg);
+    opacity: 1;
+  }
+  80% { 
+    transform: translateX(50vw) translateY(25vh) rotate(-45deg);
+    opacity: 1;
+  }
+  100% { 
+    transform: translateX(50vw) translateY(25vh) rotate(-45deg);
+    opacity: 0;
+  }
+}
+
+/* Throne Shake */
+.throne-shake {
+  animation: throneShake 0.5s ease-in-out;
+}
+
+@keyframes throneShake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* Particle Effects */
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #ffd700;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Progress Bar Gold */
+.gold-progress {
+  background: linear-gradient(90deg, #daa520 0%, #ffd700 50%, #daa520 100%);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* Glass Effect */
+.glass-panel {
+  background: rgba(26, 10, 46, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+/* Mobile Touch Targets */
+.touch-target {
+  min-height: 56px;
+  min-width: 56px;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f0518;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #daa520;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ffd700;
+}
